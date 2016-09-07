@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
-import { shodanStatus, shodanEvents } from './shodan';
+import { shodanStatus, shodanEvents, gideonStatus } from './shodan';
 
 const rootReducer = combineReducers({
   shodanStatus,
+  gideonStatus,
   shodanEvents,
   routing
 });

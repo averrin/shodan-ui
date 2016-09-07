@@ -9,7 +9,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import routes from './routes';
 import configureStore from './store/configureStore';
 import './app.global.css';
-import { setShodanOnline, createShodanEvent } from './actions/shodan';
+import { setShodanOnline, createShodanEvent, setGideonOnline } from './actions/shodan';
 
 const store = configureStore();
 
@@ -18,6 +18,8 @@ socket.addEventListener('message', m => {
   const event = JSON.parse(m.data);
   if (event.Event === 'shodanOnline') {
     store.dispatch(setShodanOnline(event));
+  } else if (event.Event === 'gideonOnline') {
+    store.dispatch(setGideonOnline(event));
   } else {
     store.dispatch(createShodanEvent(event));
   }

@@ -4,15 +4,23 @@ import { connect } from 'react-redux';
 import Status from '../components/Status';
 import Events from '../components/Events';
 import * as Actions from '../actions/shodan';
+import Subheader from 'material-ui/Subheader';
 
-function mapStateToProps(state) {
+function shodanProps(state) {
   return {
     name: 'Shodan',
     component: state.shodanStatus
   };
 }
 
-function mapStateToPropsEvents(state) {
+function gideonProps(state) {
+  return {
+    name: 'Gideon',
+    component: state.gideonStatus
+  };
+}
+
+function eventsProps(state) {
   return {
     events: state.shodanEvents
   };
@@ -22,13 +30,18 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
 
-const StatusContainer = connect(mapStateToProps, mapDispatchToProps)(Status);
-const EventsContainer = connect(mapStateToPropsEvents, mapDispatchToProps)(Events);
+const StatusContainer = connect(shodanProps, mapDispatchToProps)(Status);
+const GideonStatusContainer = connect(gideonProps, mapDispatchToProps)(Status);
+const EventsContainer = connect(eventsProps, mapDispatchToProps)(Events);
 export default class ShodanPage extends Component {
   render() {
     return (
       <div>
-        <StatusContainer />
+        <Subheader>Status</Subheader>
+        <div className="wrapper">
+          <StatusContainer />
+          <GideonStatusContainer />
+        </div>
         <EventsContainer />
       </div>
     );

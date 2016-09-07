@@ -15,6 +15,10 @@ const actionCreators = {
 const logger = createLogger({
   level: 'info',
   collapsed: true,
+  predicate: (getState, action) => { //eslint-disable-line
+    return action.type !== shodanActions.ONLINE_SHODAN &&
+      action.type !== shodanActions.ONLINE_GIDEON;
+  }
 });
 
 const router = routerMiddleware(hashHistory);
