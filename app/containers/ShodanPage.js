@@ -5,7 +5,8 @@ import * as Actions from '../actions/shodan';
 
 function mapStateToProps(state) {
   return {
-    shodan: state.shodan
+    name: 'Shodan',
+    component: state.shodan
   };
 }
 

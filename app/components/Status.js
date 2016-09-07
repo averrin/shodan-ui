@@ -1,28 +1,34 @@
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
+import Paper from 'material-ui/Paper';
 import styles from './Status.css';
+
+const style = {
+  height: 50,
+  width: 140,
+  margin: 20,
+  textAlign: 'left',
+  padding: 15,
+  display: 'inline-block',
+};
 
 class Status extends Component {
   static propTypes = {
-    shodan: PropTypes.shape({
+    name: PropTypes.string,
+    component: PropTypes.shape({
       online: PropTypes.boolean,
       lastSeen: PropTypes.string,
     })
   };
 
   render() {
-    const { online, lastSeen } = this.props.shodan;
+    const { online, lastSeen } = this.props.component;
+    const component = this.props.name;
     return (
-      <div>
-        <div className={styles.backButton}>
-          <Link to="/">
-            <i className="fa fa-arrow-left fa-3x" />
-          </Link>
-        </div>
+      <Paper style={style} zDepth={1}>
         <div className={`${styles.status}`} title={`Last seen: ${lastSeen}`}>
-          {online ? 'Online' : 'Offline'}
+          {component}: {online ? 'Online' : 'Offline'}
         </div>
-      </div>
+      </Paper>
     );
   }
 }
