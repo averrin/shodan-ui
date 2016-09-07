@@ -1,4 +1,4 @@
-import { ONLINE_SHODAN, ONLINE_GIDEON, EVENT_SHODAN } from '../actions/shodan';
+import { ONLINE_SHODAN, ONLINE_GIDEON, EVENT_SHODAN, STATUS } from '../actions/shodan';
 
 const initState = {
   online: false,
@@ -24,6 +24,20 @@ export function gideonStatus(state = initState, action) {
         return { ...state, online: true, lastSeen: action.payload.Timestamp };
       }
       return { ...state, online: false };
+    default:
+      return state;
+  }
+}
+
+const initStatus = {
+  Place: null,
+  Amount: null
+};
+
+export function globalStatus(state = initStatus, action) {
+  switch (action.type) {
+    case STATUS:
+      return JSON.parse(action.payload.Note);
     default:
       return state;
   }

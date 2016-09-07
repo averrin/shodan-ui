@@ -17,7 +17,8 @@ const logger = createLogger({
   collapsed: true,
   predicate: (getState, action) => { //eslint-disable-line
     return action.type !== shodanActions.ONLINE_SHODAN &&
-      action.type !== shodanActions.ONLINE_GIDEON;
+      action.type !== shodanActions.ONLINE_GIDEON &&
+      action.type !== shodanActions.STATUS;
   }
 });
 

@@ -1,6 +1,7 @@
 export const ONLINE_SHODAN = 'ONLINE_SHODAN';
 export const ONLINE_GIDEON = 'ONLINE_GIDEON';
 export const EVENT_SHODAN = 'EVENT_SHODAN';
+export const STATUS = 'STATUS';
 
 export function setShodanOnline(event) {
   return {
@@ -12,6 +13,13 @@ export function setShodanOnline(event) {
 export function setGideonOnline(event) {
   return {
     type: ONLINE_GIDEON,
+    payload: event
+  };
+}
+
+export function status(event) {
+  return {
+    type: STATUS,
     payload: event
   };
 }
