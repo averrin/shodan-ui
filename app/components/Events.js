@@ -7,6 +7,7 @@ import ChatBubble from 'material-ui/svg-icons/communication/chat-bubble';
 import LocationOn from 'material-ui/svg-icons/communication/location-on';
 import LocationOff from 'material-ui/svg-icons/communication/location-off';
 import GroupWork from 'material-ui/svg-icons/action/group-work';
+import DVR from 'material-ui/svg-icons/device/dvr';
 // import FontIcon from 'material-ui/FontIcon';
 // import { red500, green500 } from 'material-ui/styles/colors';
 import moment from 'moment';
@@ -15,6 +16,7 @@ import styles from './Events.css';
 
 const titles = {
   displayActivity: 'Phone display',
+  pcActivity: 'PC status',
   message: 'Message',
   startShodan: 'Shodan started',
   leave: 'You left',
@@ -23,6 +25,7 @@ const titles = {
 
 const icons = {
   displayActivity: <Smartphone />,
+  pcActivity: <DVR />,
   message: <ChatBubble />,
   startShodan: <GroupWork />,
   leave: <LocationOff />,
