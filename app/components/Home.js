@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
-import styles from './Home.css';
+import Subheader from 'material-ui/Subheader';
+// import styles from './Home.css';
 
 
 export default class Home extends Component {
   render() {
     return (
       <div>
-        <div className={styles.container}>
-          <h2>Home</h2>
-          <Link to="/shodan">to Shodan page</Link>
-        </div>
+        <Subheader>Home</Subheader>
       </div>
     );
   }

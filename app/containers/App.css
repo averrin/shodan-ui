@@ -1,0 +1,18 @@
+.drawer {
+  width: 80px !important;
+}
+.wrapper {
+  padding-left: 85px;
+}
+.active {
+  background-color: #eee!important;
+}
+.icon {
+  width: 48px;
+  height: 48px;
+  color: #555 !important;
+}
+.iconButton {
+  padding: 0px;
+  padding-top: 15px;
+}
