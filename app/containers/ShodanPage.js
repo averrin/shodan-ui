@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Subheader from 'material-ui/Subheader';
-import Status from '../components/Status';
-import Events from '../components/Events';
+import Status from '../components/Status/Status';
+import Events from '../components/Events/Events';
 import * as Actions from '../actions/shodan';
 
 function shodanProps(state) {
