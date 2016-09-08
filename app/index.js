@@ -5,48 +5,22 @@ import { Router, hashHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import settings from 'electron-settings';
+import Datastream from './utils/datastream';
 
 import routes from './routes';
 import configureStore from './store/configureStore';
 import './app.global.css';
-import { setShodanOnline, createShodanEvent, setGideonOnline, status } from './actions/shodan';
 
 const store = configureStore();
 
-// const socket = new WebSocket('ws://shodan.averr.in:8199/ws');
-console.log(settings.getSettingsFilePath());
-settings.get('url').then(url => {
-  const socket = new WebSocket(url);
-  socket.addEventListener('open', () => {
-    settings.get('token').then(token => {
-      socket.send(JSON.stringify({
-        Event: 'auth',
-        Note: token,
-      }));
-    });
-  });
-  socket.addEventListener('message', m => {
-    const event = JSON.parse(m.data);
-    if (event.Event === 'shodanOnline') {
-      store.dispatch(setShodanOnline(event));
-    } else if (event.Event === 'gideonOnline') {
-      store.dispatch(setGideonOnline(event));
-    } else if (event.Event === 'status') {
-      store.dispatch(status(event));
-    } else {
-      store.dispatch(createShodanEvent(event));
-    }
-  });
-});
-
 const history = syncHistoryWithStore(hashHistory, store);
+const datastream = new Datastream(store);
 
 injectTapEventPlugin();
 render(
   <MuiThemeProvider>
     <Provider store={store}>
-      <Router history={history} routes={routes} />
+      <Router history={history} routes={routes}  datastream={datastream}/>
     </Provider>
   </MuiThemeProvider>,
   document.getElementById('root')

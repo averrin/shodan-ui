@@ -96,6 +96,7 @@
     "webpack-merge": "^0.14.1"
   },
   "dependencies": {
+    "chart.js": "^1.1.1",
     "css-modules-require-hook": "^4.0.2",
     "electron-debug": "^1.0.1",
     "electron-settings": "McPo/electron-settings#transpiled",
@@ -104,6 +105,7 @@
     "moment": "^2.14.1",
     "postcss": "^5.1.2",
     "react": "^15.3.1",
+    "react-chartjs": "^0.8.0",
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.7.0",
