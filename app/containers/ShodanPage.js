@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import Subheader from 'material-ui/Subheader';
 import Status from '../components/Status';
 import Events from '../components/Events';
 import * as Actions from '../actions/shodan';
-import Subheader from 'material-ui/Subheader';
 
 function shodanProps(state) {
   return {
@@ -42,7 +42,7 @@ export default class ShodanPage extends Component {
           <StatusContainer />
           <GideonStatusContainer />
         </div>
-        <EventsContainer />
+        <EventsContainer height={910} />
       </div>
     );
   }

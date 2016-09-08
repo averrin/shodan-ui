@@ -98,6 +98,7 @@
   "dependencies": {
     "css-modules-require-hook": "^4.0.2",
     "electron-debug": "^1.0.1",
+    "electron-settings": "McPo/electron-settings#transpiled",
     "font-awesome": "^4.6.3",
     "material-ui": "^0.15.4",
     "moment": "^2.14.1",

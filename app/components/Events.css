@@ -1,4 +1,10 @@
-.events {}
+.events {
+  /*height: 890px;*/
+  overflow-y: auto;
+}
 .note {
   color: #777;
+}
+.say {
+  color: #111;
 }

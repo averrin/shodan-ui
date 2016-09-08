@@ -45,9 +45,32 @@ export function globalStatus(state = initStatus, action) {
 
 export function shodanEvents(state = [], action) {
   const ns = state.slice();
+  const last = ns[ns.length - 1];
   switch (action.type) {
     case EVENT_SHODAN:
-      ns.push(action.payload);
+      if (action.payload.Event === 'leave' &&
+        action.payload.Note === 'nowhere'
+      ) {
+        return ns;
+      }
+      if (last &&
+        last.Event === action.payload.Event &&
+        last.Note === action.payload.Note) {
+        if (last.count) {
+          last.count++;
+        } else {
+          last.count = 2;
+        }
+        last.Timestamp = action.payload.Timestamp;
+      } else if (last &&
+        last.Event === action.payload.Event &&
+        action.payload.Note === 'off' &&
+        last.Note === 'on') {
+        last.Note = 'on/off';
+        last.Timestamp = action.payload.Timestamp;
+      } else {
+        ns.push(action.payload);
+      }
       return ns;
     default:
       return state;
