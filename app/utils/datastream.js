@@ -10,7 +10,7 @@ class Datastream {
     };
     this.sendCommand = this.sendCommand.bind(this);
     this.ready = new Promise(resolve => {
-      console.log(settings.getSettingsFilePath());
+      console.log(settings.getSettingsFilePath()); //eslint-disable-line
       settings.get('url').then(url => {
         this.socket = new WebSocket(url);
         this.socket.addEventListener('open', () => {

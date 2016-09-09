@@ -33,15 +33,9 @@ class MoneyPage extends Component {
 
   render() {
     if (!this.props.account) {
-      return (
-        <Loader />
-      );
+      return <Loader />;
     }
-    return (
-      <div>
-        <MoneyContainer />
-      </div>
-    );
+    return <MoneyContainer />;
   }
 }
 

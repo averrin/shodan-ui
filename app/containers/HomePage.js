@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import RefreshIndicator from 'material-ui/RefreshIndicator';
 import Home from '../components/Home';
 import Loader from '../components/Loader';
 
@@ -28,15 +27,9 @@ class HomePage extends Component {
 
   render() {
     if (!this.props.status.Place) {
-      return (
-        <Loader />
-      );
+      return <Loader />;
     }
-    return (
-      <div>
-        <HomeContainer />
-      </div>
-    );
+    return <HomeContainer />;
   }
 }
 
