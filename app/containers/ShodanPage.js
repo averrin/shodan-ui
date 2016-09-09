@@ -42,7 +42,7 @@ export default class ShodanPage extends Component {
           <StatusContainer />
           <GideonStatusContainer />
         </div>
-        <EventsContainer height={910} />
+        <EventsContainer height={642} />
       </div>
     );
   }

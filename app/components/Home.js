@@ -26,6 +26,12 @@ export default class Home extends Component {
       Battery: PropTypes.shape({
         Value: PropTypes.string
       }),
+      Weather: PropTypes.shape({
+        Value: PropTypes.string
+      }),
+      WeatherIsOk: PropTypes.shape({
+        Value: PropTypes.string
+      }),
     })
   }
 
