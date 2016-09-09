@@ -2,6 +2,7 @@ export const ONLINE_SHODAN = 'ONLINE_SHODAN';
 export const ONLINE_GIDEON = 'ONLINE_GIDEON';
 export const EVENT_SHODAN = 'EVENT_SHODAN';
 export const STATUS = 'STATUS';
+export const ACCOUNT_HISTORY = 'ACCOUNT_HISTORY';
 
 export function setShodanOnline(event) {
   return {
@@ -27,6 +28,13 @@ export function status(event) {
 export function createShodanEvent(event) {
   return {
     type: EVENT_SHODAN,
+    payload: event
+  };
+}
+
+export function setAccountHistory(event) {
+  return {
+    type: ACCOUNT_HISTORY,
     payload: event
   };
 }

@@ -1,5 +1,15 @@
 import settings from 'electron-settings';
-import { setShodanOnline, createShodanEvent, setGideonOnline, status } from '../actions/shodan';
+import {
+  setShodanOnline, createShodanEvent, setGideonOnline, status,
+  setAccountHistory
+} from '../actions/shodan';
+
+const mapping = {
+  shodanOnline: setShodanOnline,
+  gideonOnline: setGideonOnline,
+  accountHistory: setAccountHistory,
+  status,
+};
 
 class Datastream {
   constructor(store) {
@@ -9,16 +19,14 @@ class Datastream {
       this.socket.addEventListener('open', () => {
         settings.get('token').then(token => {
           this.sendCommand('auth', token);
+          this.sendCommand('accountHistory');
         });
       });
       this.socket.addEventListener('message', m => {
         const event = JSON.parse(m.data);
-        if (event.Event === 'shodanOnline') {
-          store.dispatch(setShodanOnline(event));
-        } else if (event.Event === 'gideonOnline') {
-          store.dispatch(setGideonOnline(event));
-        } else if (event.Event === 'status') {
-          store.dispatch(status(event));
+        const action = mapping[event.Event];
+        if (action) {
+          store.dispatch(action(event));
         } else {
           store.dispatch(createShodanEvent(event));
         }

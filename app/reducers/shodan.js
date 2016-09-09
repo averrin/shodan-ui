@@ -37,7 +37,7 @@ const initStatus = {
 export function globalStatus(state = initStatus, action) {
   switch (action.type) {
     case STATUS:
-      return JSON.parse(action.payload.Note);
+      return action.payload.Payload;
     default:
       return state;
   }

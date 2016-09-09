@@ -37,8 +37,8 @@ app.on('ready', async () => {
 
   mainWindow = new BrowserWindow({
     show: false,
-    width: 1024,
-    height: 728
+    width: 520,
+    height: 800
   });
 
   mainWindow.loadURL(`file://${__dirname}/app/app.html`);
@@ -259,6 +259,12 @@ app.on('ready', async () => {
         label: 'Search Issues',
         click() {
           shell.openExternal('https://github.com/atom/electron/issues');
+        }
+      }, {
+        label: 'Toggle &Developer Tools',
+        accelerator: 'Alt+Ctrl+I',
+        click() {
+          mainWindow.toggleDevTools();
         }
       }]
     }];
