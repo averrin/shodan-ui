@@ -1,16 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import RefreshIndicator from 'material-ui/RefreshIndicator';
 import Money from '../components/Money/Money';
-
-const style = {
-  refresh: {
-    position: 'relative',
-    marginLeft: '25%',
-    marginTop: '50%',
-  }
-};
+import Loader from '../components/Loader';
 
 function moneyProps(state) {
   return {
@@ -31,17 +23,18 @@ class MoneyPage extends Component {
     history: PropTypes.array,
   }
 
+  static contextTypes = {
+    datastream: PropTypes.func
+  };
+
+  componentWillMount() {
+    this.context.datastream().sendCommand('accountHistory');
+  }
+
   render() {
     if (!this.props.account) {
       return (
-        <RefreshIndicator
-          size={50}
-          left={70}
-          top={0}
-          loadingColor={"#FF9800"}
-          status="loading"
-          style={style.refresh}
-        />
+        <Loader />
       );
     }
     return (

@@ -3,14 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
 import Home from '../components/Home';
-
-const style = {
-  refresh: {
-    position: 'relative',
-    marginLeft: '25%',
-    marginTop: '50%',
-  }
-};
+import Loader from '../components/Loader';
 
 function homeProps(state) {
   return {
@@ -29,17 +22,14 @@ class HomePage extends Component {
     status: PropTypes.object,
   }
 
+  static contextTypes = {
+    datastream: PropTypes.func
+  };
+
   render() {
     if (!this.props.status.Place) {
       return (
-        <RefreshIndicator
-          size={50}
-          left={70}
-          top={0}
-          loadingColor={"#FF9800"}
-          status="loading"
-          style={style.refresh}
-        />
+        <Loader />
       );
     }
     return (

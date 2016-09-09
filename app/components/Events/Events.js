@@ -11,6 +11,7 @@ import GroupWork from 'material-ui/svg-icons/action/group-work';
 import Lock from 'material-ui/svg-icons/action/lock';
 import Cloud from 'material-ui/svg-icons/file/cloud';
 import DVR from 'material-ui/svg-icons/device/dvr';
+import Announcment from 'material-ui/svg-icons/action/announcement';
 // import FontIcon from 'material-ui/FontIcon';
 import { blue500 } from 'material-ui/styles/colors';
 import moment from 'moment';
@@ -81,11 +82,12 @@ class Events extends Component {
       } else {
         icon = icons[e.Event];
       }
+      const t = moment(e.Timestamp);
       return (<ListItem
         key={i}
         primaryText={title}
-        secondaryText={moment(e.Timestamp).format('DD.MM HH:mm')}
-        leftIcon={icon}
+        secondaryText={`${t.format('DD.MM HH:mm')} (${t.fromNow()})`}
+        leftIcon={icon || <Announcment />}
       />);
     });
     items.reverse();

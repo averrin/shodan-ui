@@ -5,7 +5,7 @@ import { Router, hashHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Datastream from './utils/datastream';
+// import Datastream from './utils/datastream';
 
 import routes from './routes';
 import configureStore from './store/configureStore';
@@ -14,13 +14,13 @@ import './app.global.css';
 const store = configureStore();
 
 const history = syncHistoryWithStore(hashHistory, store);
-const datastream = new Datastream(store);
+// const datastream = new Datastream(store);
 
 injectTapEventPlugin();
 render(
   <MuiThemeProvider>
     <Provider store={store}>
-      <Router history={history} routes={routes}  datastream={datastream}/>
+      <Router history={history} routes={routes} />
     </Provider>
   </MuiThemeProvider>,
   document.getElementById('root')

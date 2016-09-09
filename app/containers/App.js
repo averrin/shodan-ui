@@ -7,7 +7,13 @@ import Wallet from 'material-ui/svg-icons/action/account-balance-wallet';
 import IconButton from 'material-ui/IconButton';
 import { Link } from 'react-router';
 
+import * as Actions from '../actions/shodan';
+
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
 import styles from './App.css';
+import Datastream from '../utils/datastream';
 
 const iconStyle = {
   width: 48,
@@ -19,7 +25,8 @@ const style = {
   paddingTop: 15
 };
 
-export default class App extends Component {
+
+class App extends Component {
   static propTypes = {
     children: PropTypes.element.isRequired,
     location: PropTypes.shape({
@@ -32,6 +39,19 @@ export default class App extends Component {
     { url: '/shodan', icon: <GroupWork /> },
     { url: '/money', icon: <Wallet /> },
   ];
+
+  static childContextTypes = {
+    datastream: PropTypes.func
+  };
+
+  constructor(props) {
+    super(props);
+    this.datastream = new Datastream(this.props);
+  }
+
+  getChildContext() {
+    return { datastream: () => this.datastream };
+  }
 
   render() {
     const items = App.menu.map((e, i) => (
@@ -55,3 +75,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default connect(() => { return {} }, d => bindActionCreators(Actions, d))(App);
