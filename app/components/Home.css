@@ -6,3 +6,11 @@
 .icon {
   margin-bottom: -5px;
 }
+
+.normal {
+  color: rgb(26, 108, 37);
+}
+
+.low {
+  color: rgb(173, 103, 20);
+}

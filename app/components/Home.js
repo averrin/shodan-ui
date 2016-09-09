@@ -20,15 +20,26 @@ export default class Home extends Component {
       Place: PropTypes.shape({
         Name: PropTypes.string
       }),
-      Amount: PropTypes.shape({}),
+      Amount: PropTypes.shape({
+        Value: PropTypes.string
+      }),
+      Battery: PropTypes.shape({
+        Value: PropTypes.string
+      }),
     })
   }
 
   render() {
+    const bs = this.props.status.Battery.Value;
+    const bStatus = bs === 'normal' ? styles.normal : styles.low;
     return (
       <div>
         <Subheader>Home</Subheader>
         <span className={styles.place}>You are at: {icons[this.props.status.Place.Name]}</span>
+        <br />
+        <span className={styles.place}>Battery status:
+          <span className={bStatus}> {bs}</span>
+        </span>
       </div>
     );
   }
