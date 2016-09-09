@@ -18,7 +18,9 @@ class Events extends Component {
   };
 
   componentWillMount() {
-    this.context.datastream().sendCommand('eventsHistory');
+    if (this.props.events < 2) {
+      this.context.datastream().sendCommand('eventsHistory');
+    }
   }
 
   componentDidUpdate() {
@@ -26,7 +28,7 @@ class Events extends Component {
   }
 
   render() {
-    const events = this.props.events;
+    const events = this.props.events.slice();
     events.sort((a, b) => {
       const am = moment(a.Timestamp);
       const bm = moment(b.Timestamp);
