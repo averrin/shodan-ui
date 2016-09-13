@@ -18,3 +18,10 @@
 .hide {
   display: none
 }
+
+.good i {
+  /*color: darkgreen: ;*/
+}
+.bad i {
+  color: darkred;
+}
