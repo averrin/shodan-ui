@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 // import Paper from 'material-ui/Paper';
+import { emojify } from 'react-emojione';
 import { ListItem } from 'material-ui/List';
 import Badge from 'material-ui/Badge';
 import Smartphone from 'material-ui/svg-icons/hardware/smartphone';
@@ -14,8 +15,21 @@ import Announcment from 'material-ui/svg-icons/action/announcement';
 // import FontIcon from 'material-ui/FontIcon';
 import { blue500 } from 'material-ui/styles/colors';
 import moment from 'moment';
+// import Linkify from 'react-linkify';
 // import IconButton from 'material-ui/IconButton';
 import styles from './Events.css';
+
+const options = {
+  convertShortnames: true,
+  convertUnicode: true,
+  convertAscii: true,
+  // styles: {
+  //     backgroundImage: 'url(emojione.sprites.png)',
+  //     width: '32px',
+  //     height: '32px',
+  //     margin: '4px'
+  // },
+};
 
 const titles = {
   displayActivity: 'Phone display',
@@ -32,7 +46,7 @@ const icons = {
   displayActivity: <Smartphone />,
   pcActivity: <DVR />,
   message: <ChatBubble />,
-  startShodan: <GroupWork />,
+  startShodan: <GroupWork style={{ transform: 'rotate(180deg)' }} />,
   leave: <LocationOff />,
   enter: <LocationOn />,
   auth: <Lock />,
@@ -57,6 +71,11 @@ export default class EventItem extends Component {
     let title;
     const e = this.props.event;
     if (e.Event === 'say' || e.Event === 'sayDirect') {
+      if (Array.isArray(e.Note)) {
+        e.Note = e.Note.map((n, i) => <div key={i}>{n}</div>);
+      } else {
+        e.Note = emojify(e.Note, options);
+      }
       title = (<span>
         <span className={styles.say}>{e.Note}</span>
       </span>);

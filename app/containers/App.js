@@ -54,15 +54,19 @@ class App extends Component {
   }
 
   render() {
-    const items = App.menu.map((e, i) => (
-      <Link to={e.url} key={i}>
-        <MenuItem className={this.props.location.pathname === e.url ? styles.active : ''}>
-          <IconButton iconStyle={iconStyle} style={style} disableTouchRipple>
-            {e.icon}
-          </IconButton>
-        </MenuItem>
-      </Link>
-    ));
+    const items = App.menu.map((e, i) => {
+      const is = { ...iconStyle };
+      is.transform = e.url === '/shodan' ? 'rotate(180deg)' : null;
+      return (
+        <Link to={e.url} key={i}>
+          <MenuItem className={this.props.location.pathname === e.url ? styles.active : ''}>
+            <IconButton iconStyle={is} style={style} disableTouchRipple>
+              {e.icon}
+            </IconButton>
+          </MenuItem>
+        </Link>
+      )
+    });
     return (
       <div>
         <Drawer open containerClassName={styles.drawer}>

@@ -63,6 +63,12 @@ export function shodanEvents(state = [], action) {
         }
         last.Timestamp = action.payload.Timestamp;
       } else if (last &&
+        last.Event === 'say' &&
+        action.payload.Event === 'sayDirect' &&
+        !Array.isArray(last.Note)
+      ) {
+        last.Note = [last.Note, action.payload.Note];
+      } else if (last &&
         last.Event === action.payload.Event &&
         action.payload.Note === 'off' &&
         last.Note === 'on') {

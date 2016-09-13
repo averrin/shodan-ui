@@ -14,3 +14,7 @@
 .low {
   color: rgb(173, 103, 20);
 }
+
+.hide {
+  display: none
+}

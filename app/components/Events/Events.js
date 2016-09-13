@@ -18,7 +18,7 @@ class Events extends Component {
   };
 
   componentWillMount() {
-    if (this.props.events < 2) {
+    if (this.props.events.length < 2) {
       this.context.datastream().sendCommand('eventsHistory');
     }
   }
