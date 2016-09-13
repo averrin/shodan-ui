@@ -56,7 +56,7 @@ export default class Home extends Component {
         <p className={styles.place}>You are at: {icons[this.props.status.Place.Name]}
           <br />
           Battery status:
-          <span className={bStatus}> {bs}</span>
+          <b className={bStatus}> {bs}</b>
         </p>
         <Divider />
         <AttendanceItem
