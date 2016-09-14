@@ -74,6 +74,12 @@ export function shodanEvents(state = [], action) {
         last.Note === 'on') {
         last.Note = 'on/off';
         last.Timestamp = action.payload.Timestamp;
+      } else if (last &&
+        last.Event === action.payload.Event &&
+        action.payload.Note === 'unidle' &&
+        last.Note === 'idle') {
+        last.Note = 'on/off';
+        last.Timestamp = action.payload.Timestamp;
       } else {
         ns.push(action.payload);
       }
