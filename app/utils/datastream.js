@@ -1,4 +1,4 @@
-import settings from 'electron-settings';
+import settings from 'electron-json-storage';
 
 class Datastream {
   constructor(actions) {
@@ -12,8 +12,8 @@ class Datastream {
     this.actions = actions;
     this.sendCommand = this.sendCommand.bind(this);
     this.ready = new Promise(resolve => {
-      console.log(settings.getSettingsFilePath()); //eslint-disable-line
-      settings.get('url').then(url => {
+      // console.log(settings.getSettingsFilePath()); //eslint-disable-line
+      settings.get('url', (_, url) => {
         this.url = url;
         this.connect(resolve);
       });
@@ -24,7 +24,7 @@ class Datastream {
     this.socket = new WebSocket(this.url);
     this.socket.addEventListener('open', () => {
       this.connected = true;
-      settings.get('token').then(token => {
+      settings.get('token', (_, token) => {
         this.socket.send(JSON.stringify({
           Event: 'auth',
           Note: token,
