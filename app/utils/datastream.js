@@ -7,6 +7,7 @@ class Datastream {
       shodanOnline: actions.setShodanOnline,
       gideonOnline: actions.setGideonOnline,
       accountHistory: actions.setAccountHistory,
+      listNotes: actions.notes,
       status: actions.status,
     };
     this.actions = actions;

@@ -4,14 +4,13 @@ import MenuItem from 'material-ui/MenuItem';
 import GroupWork from 'material-ui/svg-icons/action/group-work';
 import Home from 'material-ui/svg-icons/action/home';
 import Wallet from 'material-ui/svg-icons/action/account-balance-wallet';
+import Notes from 'material-ui/svg-icons/action/book';
 import IconButton from 'material-ui/IconButton';
 import { Link } from 'react-router';
-
-import * as Actions from '../actions/shodan';
-
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import * as Actions from '../actions/shodan';
 import styles from './App.css';
 import Datastream from '../utils/datastream';
 
@@ -38,6 +37,7 @@ class App extends Component {
     { url: '/', icon: <Home /> },
     { url: '/shodan', icon: <GroupWork /> },
     { url: '/money', icon: <Wallet /> },
+    { url: '/notes', icon: <Notes /> },
   ];
 
   static childContextTypes = {
