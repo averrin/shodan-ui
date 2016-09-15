@@ -60,13 +60,13 @@ export default class ConfigDialog extends Component {
           hintText="ws://localhost:9999/ws"
           floatingLabelText="API endpoint url"
           onChange={this.changeURL.bind(this)}
-          style={{ minWidth: 400 }}
+          style={{ width: '100%' }}
         /><br />
         <TextField
           hintText="Ask Shodan for that"
           floatingLabelText="Access token"
           onChange={this.changeToken.bind(this)}
-          style={{ minWidth: 400 }}
+          style={{ width: '100%' }}
         />
       </Dialog>
     );

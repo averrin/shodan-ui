@@ -48,8 +48,10 @@ export function shodanEvents(state = [], action) {
   const last = ns[ns.length - 1];
   switch (action.type) {
     case EVENT_SHODAN:
-      if (action.payload.Event === 'leave' &&
-        action.payload.Note === 'nowhere'
+      if ((action.payload.Event === 'leave' &&
+        action.payload.Note === 'nowhere') ||
+        action.payload.Event === 'lateAtWork' ||
+        action.payload.Event === 'attendanceGlitch'
       ) {
         return ns;
       }
