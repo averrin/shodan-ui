@@ -2,9 +2,10 @@ import React, { Component, PropTypes } from 'react';
 // import Paper from 'material-ui/Paper';
 import { List } from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
-import moment from 'moment';
+import Paper from 'material-ui/Paper';
 import styles from './Notes.css';
 import NoteItem from './NoteItem';
+import NoteForm from './NoteForm';
 
 
 export default class Notes extends Component {
@@ -29,27 +30,37 @@ export default class Notes extends Component {
     }
   }
 
-  del(id) {
+  deleteNote(id) {
     this.context.datastream().sendCommand('deleteNote', id);
+  }
+
+  addNote(text) {
+    this.context.datastream().sendCommand('addNote', text);
   }
 
   render() {
     const notes = this.props.notes;
-    const items = notes.map((e, i) => <NoteItem note={e} key={i} del={this.del.bind(this)} />);
+    const items = notes.map((e, i) => <NoteItem note={e} key={i} del={this.deleteNote.bind(this)} />);
     if (items.length > 0) {
       return (
-        <List
-          className={styles.events}
-          style={{ maxHeight: this.props.height }}
-          ref={node => this.node = node}
-        >
-          <Subheader>Notes</Subheader>
-          {items}
-        </List>
+        <div>
+          <NoteForm addNote={this.addNote.bind(this)} />
+          <List
+            className={styles.events}
+            style={{ maxHeight: this.props.height }}
+            ref={node => this.node = node}
+          >
+            <Subheader>Notes</Subheader>
+            {items}
+          </List>
+        </div>
       );
     }
     return (
-      <Subheader>No notes</Subheader>
+      <div>
+        <NoteForm addNote={this.addNote.bind(this)} />
+        <Subheader>No notes</Subheader>
+      </div>
     );
   }
 }
