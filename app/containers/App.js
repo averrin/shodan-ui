@@ -13,6 +13,8 @@ import { connect } from 'react-redux';
 import * as Actions from '../actions/shodan';
 import styles from './App.css';
 import Datastream from '../utils/datastream';
+import ConfigDialog from '../components/ConfigDialog/ConfigDialog';
+import Loader from '../components/Loader';
 
 const iconStyle = {
   width: 48,
@@ -47,13 +49,32 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.datastream = new Datastream(this.props);
+    this.datastream.ready.then(() => {
+      this.setState({ connected: true });
+    }, () => {
+      this.setState({ connected: false });
+    });
   }
+
+  state = {
+    connected: null
+  };
 
   getChildContext() {
     return { datastream: () => this.datastream };
   }
 
   render() {
+    if (this.state.connected === false) {
+      return (
+        <ConfigDialog />
+      );
+    }
+    if (this.state.connected === null) {
+      return (
+        <Loader />
+      );
+    }
     const items = App.menu.map((e, i) => {
       const is = { ...iconStyle };
       is.transform = e.url === '/shodan' ? 'rotate(180deg)' : null;
@@ -65,7 +86,7 @@ class App extends Component {
             </IconButton>
           </MenuItem>
         </Link>
-      )
+      );
     });
     return (
       <div>
@@ -80,4 +101,4 @@ class App extends Component {
   }
 }
 
-export default connect(() => { return {} }, d => bindActionCreators(Actions, d))(App);
+export default connect(() => ({}), d => bindActionCreators(Actions, d))(App);

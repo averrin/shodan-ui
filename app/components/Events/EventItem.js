@@ -12,6 +12,8 @@ import Lock from 'material-ui/svg-icons/action/lock';
 import Cloud from 'material-ui/svg-icons/file/cloud';
 import DVR from 'material-ui/svg-icons/device/dvr';
 import Announcment from 'material-ui/svg-icons/action/announcement';
+import Notes from 'material-ui/svg-icons/action/book';
+import Delete from 'material-ui/svg-icons/action/delete';
 // import FontIcon from 'material-ui/FontIcon';
 import { blue500 } from 'material-ui/styles/colors';
 import moment from 'moment';
@@ -40,6 +42,9 @@ const titles = {
   enter: 'You entered',
   auth: 'Authorization',
   startWeb: 'Server started',
+  note: 'Note created',
+  noteDeleted: 'Note deleted',
+  notesCleared: 'Notes cleared',
 };
 
 const icons = {
@@ -50,6 +55,9 @@ const icons = {
   leave: <LocationOff />,
   enter: <LocationOn />,
   auth: <Lock />,
+  note: <Notes />,
+  noteDeleted: <Delete />,
+  notesCleared: <Delete />,
   startWeb: <Cloud />,
   say: <ChatBubble color={blue500} />,
   sayDirect: <ChatBubble color={blue500} />,

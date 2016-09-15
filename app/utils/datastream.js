@@ -12,9 +12,12 @@ class Datastream {
     };
     this.actions = actions;
     this.sendCommand = this.sendCommand.bind(this);
-    this.ready = new Promise(resolve => {
+    this.ready = new Promise((resolve, reject) => {
       // console.log(settings.getSettingsFilePath()); //eslint-disable-line
-      settings.get('url', (_, url) => {
+      settings.get('url', (err, url) => {
+        if (typeof url !== 'string') {
+          return reject();
+        }
         this.url = url;
         this.connect(resolve);
       });
@@ -36,6 +39,8 @@ class Datastream {
     this.socket.addEventListener('close', () => {
       this.socket = null;
       this.connected = false;
+      this.actions.setShodanOnline({ Note: false });
+      this.actions.setGideonOnline({ Note: false });
       const reconnect = () => {
         if (!this.connected) {
           setTimeout(() => this.connect(resolve), 2000);

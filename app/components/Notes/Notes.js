@@ -29,9 +29,13 @@ export default class Notes extends Component {
     }
   }
 
+  del(id) {
+    this.context.datastream().sendCommand('deleteNote', id);
+  }
+
   render() {
     const notes = this.props.notes;
-    const items = notes.map((e, i) => <NoteItem note={e} key={i} />);
+    const items = notes.map((e, i) => <NoteItem note={e} key={i} del={this.del.bind(this)} />);
     if (items.length > 0) {
       return (
         <List
