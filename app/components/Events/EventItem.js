@@ -14,6 +14,7 @@ import DVR from 'material-ui/svg-icons/device/dvr';
 import Announcment from 'material-ui/svg-icons/action/announcement';
 import Notes from 'material-ui/svg-icons/action/book';
 import Delete from 'material-ui/svg-icons/action/delete';
+import Wallet from 'material-ui/svg-icons/action/account-balance-wallet';
 // import FontIcon from 'material-ui/FontIcon';
 import { blue500 } from 'material-ui/styles/colors';
 import moment from 'moment';
@@ -45,6 +46,7 @@ const titles = {
   note: 'Note created',
   noteDeleted: 'Note deleted',
   notesCleared: 'Notes cleared',
+  amount: 'Current amount'
 };
 
 const icons = {
@@ -59,6 +61,7 @@ const icons = {
   noteDeleted: <Delete />,
   notesCleared: <Delete />,
   startWeb: <Cloud />,
+  amount: <Wallet />,
   say: <ChatBubble color={blue500} />,
   sayDirect: <ChatBubble color={blue500} />,
 };
