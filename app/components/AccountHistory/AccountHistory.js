@@ -18,9 +18,9 @@ export default class AccountHistory extends Component {
     const data = { datasets: [{
       label: 'Amount',
       data: history.map(e => parseInt(e.Note, 10)),
-      fillColor: 'rgba(220,220,220,0.4)',
-      strokeColor: 'rgba(63, 163, 195, 1)',
-      pointColor: 'rgba(63, 163, 195, 1)',
+      fillColor: 'rgba(220,220,220,0.2)',
+      strokeColor: 'rgba(10, 142, 184, 1)',
+      pointColor: 'rgba(10, 142, 184, 1)',
       pointStrokeColor: '#fff',
       pointHighlightFill: '#fff',
       pointHighlightStroke: 'rgba(220,220,220,1)',

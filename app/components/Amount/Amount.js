@@ -36,15 +36,15 @@ export default class Amount extends Component {
     if (this.state.rates !== null && this.state.usd !== null) {
       usd = (
         <div className={styles.amount}>
-          {this.state.usd}<span style={{ color: '#555', fontSize: '10pt' }}>₽</span> {(this.props.value * this.state.rates.USD).toFixed(2)}
-          <span style={{ color: '#555', fontSize: '10pt' }}>$</span>
+          {this.state.usd}<span style={{ color: '#777', fontSize: '10pt' }}>₽</span> {(this.props.value * this.state.rates.USD).toFixed(2)}
+          <span style={{ color: '#777', fontSize: '10pt' }}>$</span>
         </div>
       );
     }
     return (
       <div>
         <div className={styles.amount}>Amount: {this.props.value}
-          <span style={{ color: '#555', fontSize: '10pt' }}>₽</span>
+          <span style={{ color: '#777', fontSize: '10pt' }}>₽</span>
         </div>
         {usd}
       </div>
