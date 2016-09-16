@@ -8,7 +8,7 @@
 }
 
 .normal {
-  color: rgb(26, 108, 37);
+  color: rgb(56, 163, 71);
 }
 
 .low {
@@ -23,5 +23,5 @@
   /*color: darkgreen: ;*/
 }
 .bad i {
-  color: darkred;
+  color: rgb(195, 54, 54);
 }

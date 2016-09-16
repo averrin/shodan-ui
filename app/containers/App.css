@@ -5,12 +5,14 @@
   padding-left: 85px;
 }
 .active {
-  background-color: #eee!important;
+  /*background-color: #eee!important;*/
+  background-color: #232323 !important;
 }
 .icon {
   width: 48px;
   height: 48px;
-  color: #555 !important;
+  /*color: #555 !important;*/
+  color: #eee !important;
 }
 .iconButton {
   padding: 0px;

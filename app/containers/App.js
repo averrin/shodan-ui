@@ -19,7 +19,7 @@ import Loader from '../components/Loader';
 const iconStyle = {
   width: 48,
   height: 48,
-  color: '#555'
+  color: '#ccc'
 };
 const style = {
   padding: 0,
@@ -41,6 +41,10 @@ class App extends Component {
     { url: '/money', icon: <Wallet /> },
     { url: '/notes', icon: <Notes /> },
   ];
+
+  static contextTypes = {
+    muiTheme: PropTypes.object.isRequired,
+  };
 
   static childContextTypes = {
     datastream: PropTypes.func
@@ -65,6 +69,7 @@ class App extends Component {
   }
 
   render() {
+    // style.color = this.context.muiTheme.palette.secondaryTextColor;
     if (this.state.connected === false) {
       return (
         <ConfigDialog />
@@ -89,7 +94,7 @@ class App extends Component {
       );
     });
     return (
-      <div>
+      <div style={{ backgroundColor: this.context.muiTheme.palette.canvasColor }}>
         <Drawer open containerClassName={styles.drawer}>
           {items}
         </Drawer>

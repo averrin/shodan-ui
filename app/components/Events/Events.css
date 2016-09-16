@@ -6,5 +6,9 @@
   color: #777;
 }
 .say {
-  color: #111;
+  color: #ccc;
+}
+
+.say div{
+  margin-bottom: 6px;
 }
