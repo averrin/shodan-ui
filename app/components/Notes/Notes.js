@@ -48,7 +48,7 @@ export default class Notes extends Component {
             style={{ maxHeight: this.props.height }}
             ref={node => this.node = node}
           >
-            <Subheader>Notes</Subheader>
+            <Subheader className="drag">Notes</Subheader>
             {items}
           </List>
           <NoteForm addNote={this.addNote.bind(this)} style={{ zIndex: 100 }} />
@@ -58,7 +58,7 @@ export default class Notes extends Component {
     return (
       <div>
         <NoteForm addNote={this.addNote.bind(this)} />
-        <Subheader>No notes</Subheader>
+        <Subheader className="drag">No notes</Subheader>
       </div>
     );
   }

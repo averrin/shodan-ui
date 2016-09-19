@@ -47,7 +47,7 @@ export default class Home extends Component {
     const attendanceClass = this.props.status.Place.Name === 'work' ? '' : styles.hide;
     return (
       <div>
-        <Subheader>Home</Subheader>
+        <Subheader className="drag">Home</Subheader>
         <WeatherItem
           weather={this.props.status.Weather.Value}
           ok={this.props.status.WeatherIsOk.Value === 'true'}

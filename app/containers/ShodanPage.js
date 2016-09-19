@@ -37,7 +37,7 @@ export default class ShodanPage extends Component {
   render() {
     return (
       <div>
-        <Subheader>Status</Subheader>
+        <Subheader className="drag">Status</Subheader>
         <div className="wrapper">
           <StatusContainer />
           <GideonStatusContainer />

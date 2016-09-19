@@ -12,7 +12,7 @@ export default class Money extends Component {
   render() {
     return (
       <div>
-        <Subheader>Account status</Subheader>
+        <Subheader className="drag">Account status</Subheader>
         <Amount value={parseInt(this.props.account.Value, 10)} />
         <Subheader>Account history</Subheader>
         <AccountHistory history={this.props.history} />

@@ -48,7 +48,7 @@ class Events extends Component {
           style={{ maxHeight: this.props.height }}
           ref={node => this.node = node}
         >
-          <Subheader>Events</Subheader>
+          <Subheader className="drag">Events</Subheader>
           {items}
         </List>
       );
