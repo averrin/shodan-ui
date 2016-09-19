@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 // import Paper from 'material-ui/Paper';
 import { List } from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
-import KeyHandler, { KEYPRESS } from 'react-key-handler';
 import styles from './Notes.css';
 import NoteItem from './NoteItem';
 import NoteForm from './NoteForm';

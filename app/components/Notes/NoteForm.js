@@ -7,6 +7,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+import KeyHandler, { KEYUP } from 'react-key-handler';
 
 const style = {
   bottom: 20,
@@ -62,6 +63,11 @@ export default class NoteItem extends Component {
     }
     return (
       <div>
+          <KeyHandler
+            keyEventName={KEYUP}
+            keyValue="a"
+            onKeyHandle={e => { e.ctrlKey && this.handleOpen(); }}
+          />
         <FloatingActionButton
           style={style}
           onTouchTap={() => { this.handleOpen(); }}
@@ -75,11 +81,13 @@ export default class NoteItem extends Component {
         >
           <TextField
             multiLine
+            autoFocus
             errorText={et}
             rows={2}
             hintText="Note text"
             style={{ width: '100%' }}
             onChange={this.changeText.bind(this)}
+            onKeyDown={e => e.ctrlKey && e.key === 'Enter' && this.saveNote()}
           />
         </Dialog>
       </div>
