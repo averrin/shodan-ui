@@ -4,8 +4,9 @@ import RefreshIndicator from 'material-ui/RefreshIndicator';
 const style = {
   refresh: {
     position: 'relative',
-    marginLeft: '25%',
+    marginLeft: '45%',
     marginTop: '50%',
+    backgroundColor: '#222'
   }
 };
 
@@ -19,7 +20,7 @@ export default class Loader extends Component {
     return (
       <RefreshIndicator
         size={50}
-        left={70}
+        left={0}
         top={0}
         loadingColor={"#FF9800"}
         status="loading"

@@ -2,7 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 // import { emojify } from 'react-emojione';
 import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
+// import RaisedButton from 'material-ui/RaisedButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import Dialog from 'material-ui/Dialog';
@@ -11,7 +11,7 @@ import FlatButton from 'material-ui/FlatButton';
 const style = {
   bottom: 20,
   right: 20,
-  position: 'absolute'
+  position: 'fixed'
 };
 
 export default class NoteItem extends Component {

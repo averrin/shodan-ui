@@ -1,4 +1,5 @@
 import { ONLINE_SHODAN, ONLINE_GIDEON, EVENT_SHODAN, STATUS } from '../actions/shodan';
+import moment from 'moment';
 
 const initState = {
   online: false,
@@ -74,14 +75,28 @@ export function shodanEvents(state = [], action) {
         last.Event === action.payload.Event &&
         action.payload.Note === 'off' &&
         last.Note === 'on') {
-        last.Note = 'on/off';
-        last.Timestamp = action.payload.Timestamp;
+        const d = moment(action.payload.Timestamp) - moment(last.Timestamp);
+        if (d > 60000) {
+          const delta = moment.duration(d).humanize();
+          last.Note = `on/off (${delta})`;
+          last.Timestamp = action.payload.Timestamp;
+        } else {
+          ns.splice(ns.indexOf(last), 1);
+          return ns;
+        }
       } else if (last &&
         last.Event === action.payload.Event &&
         action.payload.Note === 'unidle' &&
         last.Note === 'idle') {
-        last.Note = 'on/off';
-        last.Timestamp = action.payload.Timestamp;
+        const d = moment(action.payload.Timestamp) - moment(last.Timestamp);
+        if (d > 60000) {
+          const delta = moment.duration(d).humanize();
+          last.Note = `on/off (${delta})`;
+          last.Timestamp = action.payload.Timestamp;
+        } else {
+          ns.splice(ns.indexOf(last), 1);
+          return ns;
+        }
       } else {
         ns.push(action.payload);
       }

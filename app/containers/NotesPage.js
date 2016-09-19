@@ -29,7 +29,7 @@ class NotesPage extends Component {
     if (!this.props.notes) {
       return <Loader />;
     }
-    return <NotesContainer />;
+    return <NotesContainer height={document.querySelector('html').clientHeight} />;
   }
 }
 

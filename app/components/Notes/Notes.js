@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 // import Paper from 'material-ui/Paper';
 import { List } from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
-import Paper from 'material-ui/Paper';
+import KeyHandler, { KEYPRESS } from 'react-key-handler';
 import styles from './Notes.css';
 import NoteItem from './NoteItem';
 import NoteForm from './NoteForm';
@@ -44,7 +44,6 @@ export default class Notes extends Component {
     if (items.length > 0) {
       return (
         <div>
-          <NoteForm addNote={this.addNote.bind(this)} />
           <List
             className={styles.events}
             style={{ maxHeight: this.props.height }}
@@ -53,6 +52,7 @@ export default class Notes extends Component {
             <Subheader>Notes</Subheader>
             {items}
           </List>
+          <NoteForm addNote={this.addNote.bind(this)} style={{ zIndex: 100 }} />
         </div>
       );
     }

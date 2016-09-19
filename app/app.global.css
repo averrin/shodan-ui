@@ -1,5 +1,5 @@
-html, body {
-  /*height: 100%;*/
+html {
+  height: 100%;
   background-color: #141414;
   color: #ccc;
 }
@@ -10,4 +10,17 @@ body {
 .wrapper {
   display: flex;
   flexWrap: wrap;
+}
+
+::-webkit-scrollbar {
+	width: 6px;
+}
+
+::-webkit-scrollbar-track {
+	background: none;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #222;
+  border-radius: 10px;
 }

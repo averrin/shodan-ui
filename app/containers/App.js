@@ -9,6 +9,7 @@ import IconButton from 'material-ui/IconButton';
 import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import KeyHandler, { KEYPRESS } from 'react-key-handler';
 
 import * as Actions from '../actions/shodan';
 import styles from './App.css';
@@ -44,6 +45,7 @@ class App extends Component {
 
   static contextTypes = {
     muiTheme: PropTypes.object.isRequired,
+    router: PropTypes.object.isRequired
   };
 
   static childContextTypes = {
@@ -68,6 +70,10 @@ class App extends Component {
     return { datastream: () => this.datastream };
   }
 
+  select(url) {
+    this.context.router.push(url);
+  }
+
   render() {
     // style.color = this.context.muiTheme.palette.secondaryTextColor;
     if (this.state.connected === false) {
@@ -85,6 +91,11 @@ class App extends Component {
       is.transform = e.url === '/shodan' ? 'rotate(180deg)' : null;
       return (
         <Link to={e.url} key={i}>
+          <KeyHandler
+            keyEventName={KEYPRESS}
+            keyValue={String(i + 1)}
+            onKeyHandle={this.select.bind(this, e.url)}
+          />
           <MenuItem className={this.props.location.pathname === e.url ? styles.active : ''}>
             <IconButton iconStyle={is} style={style} disableTouchRipple>
               {e.icon}
@@ -98,7 +109,7 @@ class App extends Component {
         <Drawer open containerClassName={styles.drawer}>
           {items}
         </Drawer>
-        <div className={styles.wrapper}>
+        <div className={styles.wrapper} id="wrapper">
           {this.props.children}
         </div>
       </div>
