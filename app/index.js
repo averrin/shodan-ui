@@ -18,6 +18,7 @@ const store = configureStore();
 const history = syncHistoryWithStore(hashHistory, store);
 // const datastream = new Datastream(store);
 
+darkBaseTheme.palette.canvasColor = '#141414';
 injectTapEventPlugin();
 render(
   <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
