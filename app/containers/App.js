@@ -10,6 +10,7 @@ import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import KeyHandler, { KEYPRESS } from 'react-key-handler';
+import Badge from 'material-ui/Badge';
 
 import * as Actions from '../actions/shodan';
 import styles from './App.css';
@@ -33,7 +34,8 @@ class App extends Component {
     children: PropTypes.element.isRequired,
     location: PropTypes.shape({
       pathname: PropTypes.string
-    })
+    }),
+    unreadCount: PropTypes.number
   };
 
   static menu = [
@@ -86,9 +88,45 @@ class App extends Component {
         <Loader />
       );
     }
-    const items = App.menu.map((e, i) => {
+    const items = App.menu.map((el, i) => {
       const is = { ...iconStyle };
-      is.transform = e.url === '/shodan' ? 'rotate(180deg)' : null;
+      const e = { ...el };
+      if (e.url === '/shodan') {
+        // is.transform = 'rotate(180deg)';
+        if (this.props.unreadCount > 0) {
+          e.icon = (
+            <Badge
+              style={{
+                ...style,
+              }}
+              badgeStyle={{
+                top: 10,
+                right: -5,
+              }}
+              badgeContent={this.props.unreadCount} primary
+            ><GroupWork style={{
+              ...is,
+              transform: "rotate(180deg)",
+            }}/>
+            </Badge>
+          );
+        } else {
+          e.icon = (
+            <IconButton iconStyle={{
+              ...is,
+              transform: "rotate(180deg)",
+            }} style={style} disableTouchRipple>
+              {e.icon}
+            </IconButton>
+          );
+        }
+      } else {
+        e.icon = (
+          <IconButton iconStyle={is} style={style} disableTouchRipple>
+            {e.icon}
+          </IconButton>
+        )
+      }
       return (
         <Link to={e.url} key={i}>
           <KeyHandler
@@ -97,9 +135,7 @@ class App extends Component {
             onKeyHandle={this.select.bind(this, e.url)}
           />
           <MenuItem className={this.props.location.pathname === e.url ? styles.active : ''}>
-            <IconButton iconStyle={is} style={style} disableTouchRipple>
-              {e.icon}
-            </IconButton>
+            {e.icon}
           </MenuItem>
         </Link>
       );
@@ -117,4 +153,4 @@ class App extends Component {
   }
 }
 
-export default connect(() => ({}), d => bindActionCreators(Actions, d))(App);
+export default connect(s => ({unreadCount: s.unreadCount}), d => bindActionCreators(Actions, d))(App);

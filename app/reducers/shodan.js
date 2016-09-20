@@ -1,4 +1,4 @@
-import { ONLINE_SHODAN, ONLINE_GIDEON, EVENT_SHODAN, STATUS } from '../actions/shodan';
+import { ONLINE_SHODAN, ONLINE_GIDEON, EVENT_SHODAN, STATUS, EVENT_READ} from '../actions/shodan';
 import moment from 'moment';
 
 const initState = {
@@ -39,6 +39,17 @@ export function globalStatus(state = initStatus, action) {
   switch (action.type) {
     case STATUS:
       return action.payload.Payload;
+    default:
+      return state;
+  }
+}
+
+export function unreadCount(state = 0, action) {
+  switch (action.type) {
+    case EVENT_SHODAN:
+      return state + 1;
+    case EVENT_READ:
+      return 0;
     default:
       return state;
   }

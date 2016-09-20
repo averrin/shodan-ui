@@ -11,6 +11,7 @@ class Events extends Component {
   static propTypes = {
     events: PropTypes.array,
     height: PropTypes.number,
+    resetUnread: PropTypes.func,
   };
 
   static contextTypes = {
@@ -28,6 +29,7 @@ class Events extends Component {
   }
 
   render() {
+    this.props.resetUnread();
     const events = this.props.events.slice();
     events.sort((a, b) => {
       const am = moment(a.Timestamp);

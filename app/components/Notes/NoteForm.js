@@ -63,11 +63,11 @@ export default class NoteItem extends Component {
     }
     return (
       <div>
-          <KeyHandler
-            keyEventName={KEYUP}
-            keyValue="a"
-            onKeyHandle={e => { e.ctrlKey && this.handleOpen(); }}
-          />
+        <KeyHandler
+          keyEventName={KEYUP}
+          keyValue="n"
+          onKeyHandle={e => { e.ctrlKey && this.handleOpen(); }}
+        />
         <FloatingActionButton
           style={style}
           onTouchTap={() => { this.handleOpen(); }}

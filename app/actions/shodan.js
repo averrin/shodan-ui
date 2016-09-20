@@ -4,6 +4,7 @@ export const EVENT_SHODAN = 'EVENT_SHODAN';
 export const STATUS = 'STATUS';
 export const ACCOUNT_HISTORY = 'ACCOUNT_HISTORY';
 export const NOTES = 'NOTES';
+export const EVENT_READ = 'EVENT_READ';
 
 export function setShodanOnline(event) {
   return {
@@ -44,5 +45,11 @@ export function setAccountHistory(event) {
   return {
     type: ACCOUNT_HISTORY,
     payload: event
+  };
+}
+
+export function resetUnread() {
+  return {
+    type: EVENT_READ
   };
 }
